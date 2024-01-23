@@ -17,7 +17,7 @@ public class TenantFinderImpl implements TenantFinder{
                 .findFirst()
                 .orElseThrow(() -> new NoSuchObjectException("Tenant not found")));
 
-        return context
+        return context;
     }
 
     @Override
