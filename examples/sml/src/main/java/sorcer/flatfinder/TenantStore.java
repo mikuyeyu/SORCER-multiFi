@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class TenantStore {
-    private List<Tenant> tenantList;
+    public static List<Tenant> tenantList;
     public TenantStore() {
         this.tenantList = new ArrayList<>();
 
@@ -15,7 +15,7 @@ public class TenantStore {
         tenantList.add(new Tenant("Eva", "Williams", new Date("1988-11-30")));
         tenantList.add(new Tenant("Charlie", "Brown", new Date("1980-03-10")));
     }
-    public List<Tenant> getTenants() {
+    public static List<Tenant> getTenants() {
         return tenantList;
     }
 }
