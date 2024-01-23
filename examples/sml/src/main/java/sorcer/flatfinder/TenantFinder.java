@@ -6,7 +6,7 @@ import sorcer.service.ContextException;
 import java.rmi.RemoteException;
 
 public interface TenantFinder {
-    Context findFlat(Context context) throws RemoteException, ContextException;
+    Context find(Context context) throws RemoteException, ContextException;
 
     Context getDetails(Context context) throws RemoteException, ContextException;
 

@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 
 public class TenantFinderImpl implements TenantFinder{
     @Override
-    public Context findFlat(Context context) throws RemoteException, ContextException {
+    public Context find(Context context) throws RemoteException, ContextException {
         return null;
     }
 
