@@ -20,16 +20,4 @@ public class Owner extends User {
 
         return flats;
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Owner: ")
-                .append(getFirstName())
-                .append(" | ")
-                .append(getLastName())
-                .append(" | ")
-                .append(getBirthDate());
-        return sb.toString();
-    }
 }

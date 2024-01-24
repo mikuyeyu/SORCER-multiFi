@@ -7,8 +7,8 @@ import java.util.List;
 
 public class TenantStore {
     public static List<Tenant> tenantList;
-    public TenantStore() {
-        this.tenantList = new ArrayList<>();
+    static {
+        tenantList = new ArrayList<>();
 
         tenantList.add(new Tenant("John", "Doe", LocalDate.parse("1990-01-01")));
         tenantList.add(new Tenant("Alice", "Smith", LocalDate.parse("1985-05-15")));

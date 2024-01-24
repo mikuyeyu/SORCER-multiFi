@@ -19,9 +19,6 @@ import static sorcer.so.operator.exert;
 @RunWith(SorcerTestRunner.class)
 @ProjectContext("examples/sml")
 public class OwnerFinderMograms {
-    private final static String OWNER_ARG_LASTNAME = "arg/lastName";
-    private final static String OWNER_RESULT = "result/owner";
-    private final static String FLAT_ARG_FLATNAME = "arg/flatName";
     private final static String OWNERFINDER_GET_DETAILS_METHOD_NAME = "getDetails";
     private final static String OWNERFINDER_FIND_BY_FLAT_NAME_METHOD_NAME = "findByFlatName";
 
@@ -32,17 +29,17 @@ public class OwnerFinderMograms {
                 .orElseThrow(() -> new NoSuchElementException("Owner not found"));
 
         Task t3 = task("t3", sig(OWNERFINDER_GET_DETAILS_METHOD_NAME, OwnerFinderImpl.class),
-                context(OWNERFINDER_GET_DETAILS_METHOD_NAME, inVal(OWNER_ARG_LASTNAME),
-                        result(OWNER_RESULT, Signature.Direction.OUT)));
+                context(OWNERFINDER_GET_DETAILS_METHOD_NAME, inVal(OwnerFinderImpl.OWNER_ARG_LASTNAME),
+                        result(OwnerFinderImpl.OWNER_RESULT, Signature.Direction.OUT)));
 
         Block block = block("block", t3,
-                context(inVal(OWNER_ARG_LASTNAME, owner.getLastName())));
+                context(inVal(OwnerFinderImpl.OWNER_ARG_LASTNAME, owner.getLastName())));
 
         // Act
         Block result = exert(block);
 
         // Assert
-        assertEquals(owner, value(context(result), OWNER_RESULT));
+        assertEquals(owner, value(context(result), OwnerFinderImpl.OWNER_RESULT));
     }
 
     @Test
@@ -56,16 +53,16 @@ public class OwnerFinderMograms {
                 .orElseThrow(() -> new NoSuchElementException("Owner not found"));
 
         Task t3 = task("t3", sig(OWNERFINDER_FIND_BY_FLAT_NAME_METHOD_NAME, OwnerFinderImpl.class),
-                context(OWNERFINDER_FIND_BY_FLAT_NAME_METHOD_NAME, inVal(FLAT_ARG_FLATNAME),
-                        result(OWNER_RESULT, Signature.Direction.OUT)));
+                context(OWNERFINDER_FIND_BY_FLAT_NAME_METHOD_NAME, inVal(OwnerFinderImpl.OWNER_ARG_FLATNAME),
+                        result(OwnerFinderImpl.OWNER_RESULT, Signature.Direction.OUT)));
 
         Block block = block("block", t3,
-                context(inVal(FLAT_ARG_FLATNAME, flat.street)));
+                context(inVal(OwnerFinderImpl.OWNER_ARG_FLATNAME, flat.street)));
 
         // Act
         Block result = exert(block);
 
         // Assert
-        assertEquals(owner, value(context(result), OWNER_RESULT));
+        assertEquals(owner, value(context(result), OwnerFinderImpl.OWNER_RESULT));
     }
 }

@@ -1,7 +1,6 @@
 package sorcer.flatfinder;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public abstract class User {
     private String _firstName;
@@ -36,5 +35,17 @@ public abstract class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this._birthDate = birthDate;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("User: ")
+                .append(getFirstName())
+                .append(" | ")
+                .append(getLastName())
+                .append(" | ")
+                .append(getBirthDate());
+        return sb.toString();
     }
 }

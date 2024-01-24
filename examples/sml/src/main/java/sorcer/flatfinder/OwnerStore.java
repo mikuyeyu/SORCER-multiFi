@@ -8,7 +8,7 @@ public class OwnerStore {
     static {
         owners = new ArrayList<>();
 
-        Flat potulickaFlat = FlatStore.flats.get("Potulica");
+        Flat potulickaFlat = FlatStore.flats.get("Potulicka");
         Flat wawelskaFlat = FlatStore.flats.get("Wawelska");
 
         owners.add(new Owner("Michael", "Jordan", LocalDate.parse("1963-02-17"), new Flat[]{potulickaFlat}));
