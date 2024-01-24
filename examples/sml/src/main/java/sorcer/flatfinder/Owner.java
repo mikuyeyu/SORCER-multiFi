@@ -1,5 +1,6 @@
 package sorcer.flatfinder;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.Date;
 public class Owner extends User {
     private final ArrayList<Flat> _flats;
 
-    public Owner(String firstName, String lastName, Date birthDate, Flat[] flats) {
+    public Owner(String firstName, String lastName, LocalDate birthDate, Flat[] flats) {
         super(firstName, lastName, birthDate);
         this._flats = new ArrayList<>();
         this._flats.addAll(Arrays.asList(flats));
@@ -18,5 +19,17 @@ public class Owner extends User {
         flats = this._flats.toArray(flats);
 
         return flats;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Owner: ")
+                .append(getFirstName())
+                .append(" | ")
+                .append(getLastName())
+                .append(" | ")
+                .append(getBirthDate());
+        return sb.toString();
     }
 }

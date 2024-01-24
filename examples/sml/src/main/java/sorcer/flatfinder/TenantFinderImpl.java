@@ -5,6 +5,7 @@ import sorcer.service.ContextException;
 
 import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,9 +30,9 @@ public class TenantFinderImpl implements TenantFinder{
                 .findFirst()
                 .orElseThrow(() -> new NoSuchObjectException("Tenant not found"));
 
-        context.putValue("name", tenant.firstName);
-        context.putValue("lastName", tenant.lastName);
-        context.putValue("birthDate", tenant.birthDate);
+        context.putValue("name", tenant.getFirstName());
+        context.putValue("lastName", tenant.getLastName());
+        context.putValue("birthDate", tenant.getBirthDate());
 
         return context;
     }
@@ -63,15 +64,12 @@ public class TenantFinderImpl implements TenantFinder{
         context.putValue("flatmates",potentialFlatmates);
         return context;
     }
-    private int calculateAgeDifference(Date date1, Date date2) {
+    private int calculateAgeDifference(LocalDate date1, LocalDate date2) {
         // Obliczanie różnicy wieku w latach
-        long milliseconds1 = date1.getTime();
-        long milliseconds2 = date2.getTime();
+        long year1 = date1.getYear();
+        long year2 = date2.getYear();
 
-        long diff = milliseconds2 - milliseconds1;
-        long diffYears = diff / (24 * 60 * 60 * 1000 * 365L);
-
-        return (int) diffYears;
+        return (int) Math.abs(year2 - year1);
     }
 }
 

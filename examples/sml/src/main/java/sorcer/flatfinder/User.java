@@ -1,39 +1,40 @@
 package sorcer.flatfinder;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class User {
-    String firstName;
-    String lastName;
-    Date birthDate;
+    private String _firstName;
+    private String _lastName;
+    private LocalDate _birthDate;
 
-    protected User(String firstName, String lastName, Date birthDate) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
+    protected User(String firstName, String lastName, LocalDate birthDate) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._birthDate = birthDate;
     }
 
     public String getFirstName() {
-        return firstName;
+        return _firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return _lastName;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public LocalDate getBirthDate() {
+        return _birthDate;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this._firstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this._lastName = lastName;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthDate(LocalDate birthDate) {
+        this._birthDate = birthDate;
     }
 }
