@@ -1,10 +1,7 @@
 package sorcer.flatfinder;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import sorcer.service.Context;
 import sorcer.service.ContextException;
-import sorcer.service.Identifiable;
 
 import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
@@ -38,7 +35,7 @@ public class OwnerFinderImpl implements OwnerFinder {
                 .findFirst()
                 .orElseThrow(() -> new NoSuchObjectException("Owner not found"));
 
-        context.putValue("result/details", owner.toString());
+        context.putValue("result/owner", owner);
         return context;
     }
 }
